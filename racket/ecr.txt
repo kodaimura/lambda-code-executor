@@ -1,0 +1,9 @@
+docker buildx build --platform linux/amd64 --provenance=false -t lambda-executor-racket:v1.0.0 .
+
+aws ecr create-repository --repository-name lambda-executor-racket
+
+aws ecr get-login-password | docker login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
+
+docker tag lambda-executor-racket:v1.0.0 <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/lambda-executor-racket:v1.0.0
+
+docker push <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/lambda-executor-racket:v1.0.0
