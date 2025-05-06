@@ -22,7 +22,7 @@ def lambda_handler(event, context):
             ["racket", code_path],
             capture_output=True,
             text=True,
-            timeout=10
+            timeout=8
         )
 
         return {
